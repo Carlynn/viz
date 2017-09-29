@@ -1,13 +1,8 @@
 class VizController < ApplicationController
 
+  # GET RID OF COMMENTS BEFORE COMMITS
   def index
-    # figaro    gem for hiding specific
-
     @listings = JobListing.all
 
   end
-
-  # @response.parsed_response.class = > hash
-
-
 end

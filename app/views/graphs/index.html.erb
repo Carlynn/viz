@@ -1,11 +1,16 @@
 <h1>index page for all graphs</h1><br>
-<% @graphs.each do |graph| %>
 
-  <%= graph.title %><br>
-  <b>Author: </b><%= link_to "#{graph.user.first_name} #{graph.user.last_name}", user_path(graph.user.slug) %><br>
-    <%= link_to "Read More", graph_path(graph.id) %>
+<% @graphs.each do |graph| %>
+  <%= graph.title %><br> <!-- No naked HTML – put this in a tag like h1; is will get rid of need for <br> -->
+
+  <b>Author: </b><%= link_to "#{graph.user.first_name} #{graph.user.last_name}", user_path(graph.user.slug) %><br><!-- No naked HTML – put this in a tag like h1; this will get rid of need for <br> -->
+  
+  <%= link_to "Read More", graph_path(graph.id) %>
+
   <% if graph.user == current_user %>
     <%= button_to "Edit Post", edit_graph_path(graph.id), method:'get', class: 'btn' %>
+    <!-- Use one way to show hashes -->
+    <!-- If you are going to use method: 'get', class: 'btn' on line 11, you should do controller: 'graphs', action: 'show', id: graph.id, confirm: 'Are you sure...', etc on line 14 -->
     <%= button_to 'Delete', {:controller => "graphs", :action => 'show', :id => graph.id}, data: {:confirm => "Are you sure you want to delete the #{graph.title} graph?"}, :method => :delete, class: 'btn delete-button' %>
   <% end %>
 
