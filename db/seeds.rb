@@ -7,31 +7,34 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 User.delete_all
 
-users = [{
-  first_name: "Chanel",
-  last_name: "Sparks",
-  city: "San Francisco",
-  image: "http://www.boostinspiration.com/wp-content/uploads/2010/09/BlackAndWhitePhotographyPeople1.jpg",
-  email: "csparks@unknown.com",
-  password: "ipizza",
-  },{
+# indentation! anything that is nested should be indented. 
+users = [
+  {
+    first_name: "Chanel",
+    last_name: "Sparks",
+    city: "San Francisco",
+    image: "http://www.boostinspiration.com/wp-content/uploads/2010/09/BlackAndWhitePhotographyPeople1.jpg",
+    email: "csparks@unknown.com",
+    password: "ipizza",
+  }, {
     first_name: "janet",
     last_name: "Sparks",
     city: "San Francisco",
     image: "http://www.curiositytravels.org/wp-content/uploads/2015/12/IMG_6425.jpg",
     email: "jsparks@unknown.com",
     password: "ipizza",
-    },
-]
+  }
+];
 
 User.create(users)
 
+# get rid of comments
+# you can rename the variable "response" to be more intuitive (like `responseForPageOne`)
 # last requested page numbers = [1,2]
 response = HTTParty.get('https://authenticjobs.com/api/?api_key=6cf34b9cc6643879e6c569fa1e563917&method=aj.jobs.search&perpage=100&page=1&format=json')
 hash_listings = response.parsed_response["listings"]["listing"]
 
 hash_listings.each do |listing|
-
   if listing["company"]["location"].nil?
     @city_name = "No City Name Provided"
     @country_name = "No Country Name Provided"
@@ -41,12 +44,14 @@ hash_listings.each do |listing|
     else
       @city_name = listing["company"]["location"]["city"]
     end
+
     if listing["company"]["location"]["country"].nil?
       @country_name = "No Country Name Provided"
     else
       @country_name = listing["company"]["location"]["country"]
     end
   end
+
   job_listing = {
     title:  listing["title"],
     post_date: listing["post_date"],
@@ -56,17 +61,6 @@ hash_listings.each do |listing|
     city: @city_name,
     country: @country_name,
   }
+
   JobListing.create(job_listing)
-
 end
-
-
-
-
-
-
-
-
-
-
-#
