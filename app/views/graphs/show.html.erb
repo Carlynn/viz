@@ -53,7 +53,7 @@
   <% if @graph.graph_type == 'bar' %>
           <% if @graph.x_axis == 'post_date' %>
             <%= bar_chart @listing.group(:category).group_by_week(@graph.x_axis).count, height: "#{graph_h}",
-                xtitle: @graph.x_axis.upcase, ytitle: "Number of Job Listings"%>
+                xtitle: "Number of Job Listings", ytitle: @graph.x_axis.upcase%>
           <% elsif @graph.x_axis == 'city' %>
             <% filter_listing_by_top_cities %>
             <%= render_bar_graph %>
