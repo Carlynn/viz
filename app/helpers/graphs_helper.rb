@@ -10,7 +10,7 @@ module GraphsHelper
                 }
               }
             },
-    xtitle: @graph.x_axis.upcase, ytitle: "Number of Job Listings", height: "100%"
+    xtitle: "Number of Job Listings", ytitle: @graph.x_axis.upcase, height: "100%"
   end
 
   def render_pie_graph
