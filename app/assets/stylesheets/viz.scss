@@ -27,9 +27,20 @@
   margin-top: 10%;
 }
 .icon {
-  width: 15%;
+  width: 25px;
+  height: 25px;
+  background-size: 25px 25px !important;
   margin-top: 10px;
   margin-bottom: 8px;
+}
+.icon_job{
+  background: image-url("icon_job_01.png") no-repeat;
+}
+.icon_job_trends{
+  background: image-url("icon_job_trends_01.png") no-repeat;
+}
+.icon_hot_market{
+  background: image-url("icon_hot_market_01.png")no-repeat;
 }
 .viz-margin {
   padding-left: 5% !important;
